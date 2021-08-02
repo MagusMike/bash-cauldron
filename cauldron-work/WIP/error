@@ -1,0 +1,129 @@
+miketest@mikes-MBP-2 Downloads % ./delete5.py
+
+Getting certs for device: E11D8840-E708-55E6-BD03-383F85859DB0
+
+
+
+Response: <html>
+
+<head><title>400 Bad Request</title></head>
+
+<body>
+
+<center><h1>400 Bad Request</h1></center>
+
+<hr><center>nginx</center>
+
+</body>
+
+</html>
+
+
+
+Traceback (most recent call last):
+
+  File "./delete5.py", line 60, in <module>
+
+    get_and_revoke_certs()
+
+  File "./delete5.py", line 28, in get_and_revoke_certs
+
+    data = json.loads(response)
+
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py", line 339, in loads
+
+    return _default_decoder.decode(s)
+
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py", line 364, in decode
+
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py", line 382, in raw_decode
+
+    raise ValueError("No JSON object could be decoded")
+
+ValueError: No JSON object could be decoded
+
+
+
+miketest@mikes-MBP-2 Downloads % ./delete5.py
+
+Getting certs for device: E11D8840-E708-55E6-BD03-383F85859DB0
+
+
+
+Response: <html>
+
+<head><title>400 Bad Request</title></head>
+
+<body>
+
+<center><h1>400 Bad Request</h1></center>
+
+<hr><center>nginx</center>
+
+</body>
+
+</html>
+
+
+
+Traceback (most recent call last):
+
+  File "./delete5.py", line 60, in <module>
+
+    get_and_revoke_certs()
+
+  File "./delete5.py", line 28, in get_and_revoke_certs
+
+    data = json.loads(response)
+
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py", line 339, in loads
+
+    return _default_decoder.decode(s)
+
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py", line 364, in decode
+
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py", line 382, in raw_decode
+
+    raise ValueError("No JSON object could be decoded")
+
+ValueError: No JSON object could be decoded
+
+
+
+miketest@mikes-MBP-2 Downloads % ./delete5.py
+
+Getting certs for device: E11D8840-E708-55E6-BD03-383F85859DB0
+
+
+
+Response: <html>
+
+<head><title>400 Bad Request</title></head>
+
+<body>
+
+<center><h1>400 Bad Request</h1></center>
+
+<hr><center>nginx</center>
+
+</body>
+
+</html>
+
+
+
+Traceback (most recent call last):
+
+  File "./delete5.py", line 60, in <module>
+
+    get_and_revoke_certs()
+
+  File "./delete5.py", line 28, in get_and_revoke_certs
+
+    data = json.loads(response.content)
+
+AttributeError: 'str' object has no attribute 'content'

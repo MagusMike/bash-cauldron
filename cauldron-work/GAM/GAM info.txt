@@ -1,0 +1,136 @@
+============.   GAM info     .=================
+#Acting on Google Drives - personal and team:
+https://github.com/jay0lee/GAM/wiki/GoogleDriveManagement#adding-permissions-to-a-filefolder-for-a-user
+
+
+# Update GAM: 
+bash <(curl -s -S -L https://git.io/install-gam) -l
+
+#Delegate Mailbox access (account must be active):
+gam user alex delegate to mjouni@wellframe.com
+Giving mjouni@wellframe.com delegate access to alex@wellframe.com (1/1)
+
+#show delegate for a single user
+gam user lcharland@wellframe.com show delegates
+
+#Remove a Delegate (this removes user2's delegate access to user)
+gam user user@wellframe.com delete delegate user2@wellframe.com
+
+#Drive File transfer (all, both shared and non-shared):
+gam create datatransfer oldguy@acme.com gdrive newguy@acme.com privacy_level shared,private
+
+#Transfer calendar entries from one user to another, and release all calendar entries by old user:
+gam create datatransfer oldguy@acme.com calendar newguy@acme.com release_resources true
+# This makes the new user owner of the calendar, and adds it to their navigation menu. 
+$gamdir/gam calendar $offuser add owner $newowner
+
+#Remove a user from all groups
+gam user <email address> delete groups
+
+#Create a Team Drive, with initial user being the owner:
+gam user jsalesguy@acme.com add teamdrive "Sales Reports"
+
+
+#GAM Out of office vacation responder set
+gam
+ user <username> | group <groupname> | ou <ouname> | all users
+ vacation on|off subject <subject text> [message <message text>] | [file <message file>] [html]
+ startdate <YYYY-MM-DD> enddate <YYYY-MM-DD>
+ [contactsonly] [domainonly]
+ (replace <Tag> <String>)*
+EXAMPLE:
+gam user JoeUser@wellframe.com vacation on subject "I'm on vacation" message "I will be on Mars for the next 100 years. I'll get back to you when I return.\n\nJoe"
+
+#Show Vacation Responder for user
+gam user JoeUser@wellframe.com show vacation
+
+#Calendar selective delete of an event:
+gam calendar mbielagus@wellframe.com deleteevent id 3pc41imr80qo9ve14p5n88cqhi_20200416T160000Z doit notifyattendees
+
+#Get Calendar event ID for the above command:
+gam calendar mbielagus@wellframe.com printevents query "Paper Discussion"
+
+#List Calendars for a user:
+gam user mbielagus@wellframe.com show calendars
+
+
+#Find the Drive ID for all folders that a person owns:
+gam user rwambold@wellframe.com show filelist query "mimeType = 'application/vnd.google-apps.folder'"
+
+#And if they own a ton, just grep:
+gam user rwambold@wellframe.com show filelist query "mimeType = 'application/vnd.google-apps.folder'" | grep -i "members"
+
+#Change Drive Ownership:  (need File ID first ^^)  List original owner first, new owner is at the end.
+gam user jacob@wellframe.com update drivefileacl 1XL2gaMmr1X785tbZQ7Rhlr3HOu41kq5e eclark@wellframe.com role ower
+
+
+# link for License syntax and license SKU shortcuts https://github.com/jay0lee/GAM/wiki/LicenseExamples 
+#Show license for users (Archived)
+gam print licenses sku "gsuiteenterprisearchived"
+
+#Show license for users (Enterprise Plus.  Ent Standard is wsentstand)
+gam print licenses sku "wsentplus"
+
+#Change a license type for a user, new type first, FROM second:
+gam user user@wellframe.com update license gsuiteenterprisearchived from wsentplus
+
+#Show user info:
+gam info user jhatem
+
+#Show team drives (and IDs) for user:
+gam user jhatem show teamdrives
+
+#To hide user from GAL:
+gam update user alex@wellframe.com gal off
+
+#Suspend a user
+gam update user pmcartney@wellframe.com suspended on
+
+#User lists:
+Active only: gam print users query 'isSuspended=False'
+Suspended only: gam print users query 'isSuspended=True'
+Deleted only: gam print users deleted_only
+
+#List all users by last login date time
+gam print users firstname lastname lastlogintime
+
+
+#Export info:
+First, create a matter to get matter ID:
+gam create vaultmatter name "JH Test" description "Investigation of mail export, take 1" collaborators "jvincent@wellframe.com"
+
+gam create export matter 0376cde3-772b-4c1b-b3d9-e82ac9d614f9 corpus mail accounts moe@acme.com,larry@acme.com,curly@acme.com
+gam create export matter <mattername> name <exportname> corpus mail scope all_data accounts mye...@myemail.com terms label:^deleted -label:Draft -in:spam
+
+#Mailbox & Drive Size Report: outputs to local drive.
+gam report users parameters accounts:drive_used_quota_in_mb,accounts:gmail_used_quota_in_mb>mailboxes-2021.csv
+#Or on screen: 
+gam report users user jhatem@wellframe.com
+
+#Vault Matter Cleanup
+#first close the matter
+gam update matter "$matname" action close
+#Next delete it
+gam update matter "$matname" action delete
+# This will print all the vault matters:  
+gam print vaultmatters
+# If you need to delete by Matter number, use uid:, like this- 
+gam update matter uid:5bb2b6f4-7e5d-4dc9-a17e-57ac7233ff83 action close
+
+
+#To enable another user / computer to use GAM:
+You can safely copy client_secrets.json to each machine. You'll share API quota but otherwise authenticate separately.
+
+If these are highly trusted admins and you want them to have access to user data level operations (manage and read user email, docs, calendar, etc) 
+then give them oauth2service.json also. That file is literally the key to all your user data so be careful with it.
+
+oauth2.txt is the file that authenticates as you when performing admin operations (create user, groups, etc). You probably don't want to copy it. When the other 
+admins run something like "gam info domain" it'll ask them to authenticate as themselves and create their own oauth2.txt.
+
+
+#If you get a 403 permission error in GAM, you can redo the authorizations like this:
+In terminal, do the following, if you're given instructions on any step, follow them
+* Change to directory where gam executable is located: cd /path/to/GAM
+* Update project to make sure that Vault API is enabled: gam update project
+* Backup current oauth2.txt: mv oauth2.txt oauth2.sav
+* Create new oauth2.txt, enter number for new permisison so the entry is marked *, then do c to continue: gam oauth create

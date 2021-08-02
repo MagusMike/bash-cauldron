@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AllowNetworkSelection</key>
+	<true/>
+	<key>AuthServer</key>
+	<string>wellframe.okta.com</string>
+	<key>BackgroundImage</key>
+	<string>/usr/local/jamfconnect/images/Wellframe-primary-logo.png</string>
+	<key>CreateJamfConnectPassword</key>
+	<true/>
+	<key>DemobilizeUsers</key>
+	<false/>
+	<key>DenyLocal</key>
+	<true/>
+	<key>DenyLocalExcluded</key>
+	<array>
+		<string>wellframeit</string>
+	</array>
+	<key>EnableFDE</key>
+	<true/>
+	<key>LocalHelpFile</key>
+	<string>/usr/local/jamfconnect/help.pdf</string>
+	<key>LoginLogo</key>
+	<string>/usr/local/jamfconnect/images/Wellframe-icon.jpeg</string>
+	<key>LoginWindowMessage</key>
+	<string>Please login using your Wellframe email and password</string>
+	<key>MessageOTPEntry</key>
+	<string>Enter your verification method for Multi-factor Authentication.</string>
+	<key>Migrate</key>
+	<true/>
+	<key>MigrateUsersHide</key>
+	<array>
+		<string>wellframeit</string>
+	</array>
+	<key>OIDCAccessClientID</key>
+	<string>0oa2qwe7o85dDWcG54x7</string>
+	<key>OIDCAdminClientID</key>
+	<string>0oa2qvilprv0eOAPc4x7</string>
+	<key>OIDCClientID</key>
+	<string>0oa2qwe7o85dDWcG54x7</string>
+        <key>OIDCDiscoveryURL</key>
+	<string>https://wellframe.okta.com/.well-known/openid-configuration</string>
+	<key>OIDCNewPassword</key>
+	<false/>
+	<key>OIDCProvider</key>
+	<string>Okta</string>
+	<key>OIDCRedirectURI</key>
+	<string>https://127.0.0.1/jamfconnect</string>
+	<key>OIDCTenant</key>
+	<string>wellframe</string>
+</dict>
+</plist>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Appearance</key>
+	<dict>
+		<key>MenubarIcon</key>
+		<string>/usr/local/jamfconnect/</string>
+		<key>MenubarIconDark</key>
+		<string>/usr/local/jamfconnect/</string>
+	</dict>
+	<key>CustomMenuItems</key>
+	<dict>
+		<key>quit</key>
+		<string>Relaunch</string>
+	</dict>
+	<key>HiddenMenuItems</key>
+	<array>
+		<string>about</string>
+		<string>preferences</string>
+	</array>
+	<key>IdPSettings</key>
+	<dict>
+		<key>OktaAuthServer</key>
+		<string>wellframe.okta.com</string>
+		<key>Provider</key>
+		<string>Okta</string>
+	</dict>
+	<key>Kerberos</key>
+	<dict>
+		<key>AutoRenewTickets</key>
+		<true/>
+		<key>Realm</key>
+		<string>WELLFRAME.LAN</string>
+	</dict>
+	<key>PasswordPolicies</key>
+	<dict>
+		<key>ExpirationCountdownStartDay</key>
+		<integer>10</integer>
+		<key>ExpirationNotificationStartDay</key>
+		<integer>5</integer>
+		<key>NetworkCheck</key>
+		<integer>60</integer>
+		<key>PolicyRequirements</key>
+		<dict>
+			<key>minLength</key>
+			<integer>12</integer>
+			<key>minLowerCase</key>
+			<integer>1</integer>
+			<key>minMatches</key>
+			<integer>3</integer>
+			<key>minNumber</key>
+			<integer>1</integer>
+			<key>minSymbol</key>
+			<integer>1</integer>
+			<key>minUpperCase</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SignIn</key>
+	<dict>
+		<key>MFARename</key>
+		<dict/>
+		<key>OneTimePasswordMessage</key>
+		<string>Enter verification code</string>
+		<key>PasswordLabel</key>
+		<string>Password</string>
+		<key>RequireSignIn</key>
+		<true/>
+		<key>SignInLogo</key>
+		<string>/usr/local/jamfconnect/Wellframe-icon.jpeg</string>
+		<key>UsernameLabel</key>
+		<string>Username</string>
+		<key>WindowTitle</key>
+		<string>Sign in</string>
+	</dict>
+	<key>UserHelp</key>
+	<dict>
+		<key>HelpOptions</key>
+		<string>https://wellframe.atlassian.net/</string>
+		<key>HelpType</key>
+		<string>URL</string>
+		<key>SoftwarePath</key>
+		<string>/Applications/Self Service.app</string>
+	</dict>
+	<key>WebBrowser</key>
+	<dict>
+		<key>BrowserSelection</key>
+		<string>Google Chrome</string>
+		<key>LaunchBrowser</key>
+		<true/>
+	</dict>
+</dict>
+</plist>
