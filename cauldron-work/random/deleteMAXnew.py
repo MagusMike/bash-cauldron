@@ -5,8 +5,8 @@ import os
 import requests
 
 
-SERVER = 'https://wellframe.okta.com'  # eg. 'https://<orgname>.okta.com'
-ORG_API_TOKEN = os.environ['SSWS 007kXLdkDkr8HAfAzq_M8JIgdkm3YTSB7Vo6xe4rEW'] # or however you'd like to assign this (plain text is fine unless under
+SERVER = 'https://company.okta.com'  # eg. 'https://<orgname>.okta.com'
+ORG_API_TOKEN = os.environ[''] # or however you'd like to assign this (plain text is fine unless under
                                              # version control
 MAC_UDID = ''  #00rcY8surzU5ZoR62_JTpY3PSzq8DJMvYCCyjViPHS
 

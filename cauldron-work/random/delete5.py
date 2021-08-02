@@ -1,5 +1,5 @@
 #!/usr/bin/python
- 
+
 #
 # Copyright 2018-present, Okta Inc.
 #
@@ -9,15 +9,15 @@
 #
 # APIs used in this process are internal APIs and they are subject to changes without prior notice.
 #
- 
+
 import subprocess
 import json
- 
-SERVER = 'https://wellframe.okta.com'  # eg. 'https://<orgname>.okta.com'
-ORG_API_TOKEN = 'SSWS 007kXLdkDkr8HAfAzq_M8JIgdkm3YTSB7Vo6xe4rEW'  # eg. 'SSWS 00q6jBD9vjrQUjs8Gk2s8Tn6cyAdnfcsqD9'
+
+SERVER = 'https://company.okta.com'  # eg. 'https://<orgname>.okta.com'
+ORG_API_TOKEN = ''  # eg. 'SSWS 00q6jBD9vjrQUjs8Gk2s8Tn6cyAdnfcsqD9'
 MAC_UDID = open('/private/tmp/uuid.txt', 'r').read() # eg. '564D4B62-CE59-616C-D237-0F586BD3C4F0'
 
- 
+
 def get_and_revoke_certs():
     url = '%s/api/v1/internal/devices/%s/credentials/keys' % (SERVER, MAC_UDID)
     print 'Getting certs for device: ' + MAC_UDID
@@ -35,8 +35,8 @@ def get_and_revoke_certs():
             exit(1)
         revoke_cert(key['kid'])
     print 'Finished'
- 
- 
+
+
 def revoke_cert(kid):
     url = '%s/api/v1/internal/devices/%s/keys/%s/lifecycle/revoke' % (SERVER, MAC_UDID, kid)
     print "Revoking certificate: " + kid
@@ -44,7 +44,7 @@ def revoke_cert(kid):
                                         '-H', 'Authorization: ' + ORG_API_TOKEN,
                                         '%s/api/v1/internal/devices/%s/keys/%s/lifecycle/revoke'])
     print 'Response: ' + response
- 
+
 def check_params():
     if not SERVER:
         print "SERVER can't be empty, please populate org URL eg. https://&lt;org>.okta.com"
@@ -55,6 +55,6 @@ def check_params():
     if not MAC_UDID:
         print "MAC_UDID can't be empty, please assign macOS UDID"
         exit(1)
- 
+
 check_params()
 get_and_revoke_certs()

@@ -30,9 +30,9 @@ else:
 
 #####################################################################
 # Org Configuration: Configure you organization URL and Token
-ORG_TOKEN = 'o-BK1Kqxb8KjKK8VgZw5VluLdr_d8GiW3WgXYZntbzM'
-URL = 'https://wellframe.okta.com'
-# ORG_TOKEN = 'Q1hlUOg-cs73tmnJj5ymMuklqdnPsids3i71uIz4jTg'
+ORG_TOKEN = ''
+URL = 'https://company.okta.com'
+# ORG_TOKEN = ''
 # URL = 'https://desktopdt.widerock.com'
 #####################################################################
 
